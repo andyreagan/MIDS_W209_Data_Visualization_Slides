@@ -1,0 +1,306 @@
+/*Global*/
+form {
+  margin-bottom: 20px;
+}
+
+.media-item-container img {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
+
+
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*Global Components*/
+
+header, .trial-pane-header {
+    margin-top: 150px;
+}
+
+a .btn {
+    font-size: 60%;
+    transform: translateY(-50%);
+}
+
+.btn-group {
+    margin-right: 2em;
+}
+
+
+.modal-input {
+    margin-bottom: 10px;
+}
+
+.modal-input .input-group-addon {
+    text-align: left;
+    min-width: 85px;
+}
+
+
+.btn.input-group-addon{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.btn-primary.active{
+    background-color:#e31a1c;
+    border-color:#bd0026;
+    color:#000;
+}
+
+.btn.btn-radio:hover {
+    background-color:#e31a1c;
+    border-color:#bd0026;
+    color:#333;
+}
+
+.media-item {
+    width: 70%;
+    height: 70%;
+}
+
+
+/*Global Responsive*/
+@media (max-width: 992px) {
+    body{font-size: 12px;}
+    h1 .site-name {
+        font-size: 36px;
+    }
+    h1,
+    .h1 {
+      font-size: 30px;
+    }
+    h2,
+    .h2 {
+      font-size: 24px;
+    }
+    h3,
+    .h3 {
+      font-size: 18px;
+    }
+    h4,
+    .h4 {
+      font-size: 14px;
+    }
+    h5,
+    .h5 {
+      font-size: 12px;
+    }
+    h6,
+    .h6 {
+      font-size: 10px;
+    }
+
+    .overflow{height: 300px;}
+    .overflow-small{height: 200px;}
+}
+
+.navbar {
+    min-height: 30px;
+    margin-bottom: 15px;
+}
+
+
+@media (min-width: 992px) {
+    header, .trial-pane-header {
+        margin-top: 100px;
+        margin-bottom: 5px;
+    }
+    .container-fluid {
+        height: 30px;
+    }
+    .navbar-button, .navbar-search {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+    }
+    .navbar-button {
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-button, .navbar-search {
+        padding-bottom: 12px;
+    }
+    .navbar-button {
+        text-align: right;
+    }
+}
+
+nav .site-name{
+    padding-left: 2%;
+    margin-top: 8px;
+    font-weight: 300;
+}
+
+.site-name {
+    letter-spacing: 1px;
+    font-family: 'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+nav .site-name a{
+    text-decoration: none;
+    color: #333;
+}
+
+nav .site-name a:hover{
+    opacity: .9;
+}
+
+.likert {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  /* the magic dust that ensure equal width */
+}
+
+.likert li {
+  display: table-cell;
+  text-align: center;
+  list-style-type: none;
+}
+
+.likert li label {
+  display: block;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+ul#answers {
+  list-style-type: none;
+}
+
+#explanation-container {
+  display: none;
+}
+
+.table-container {
+  max-height: 30em;
+  margin-bottom: 20px;
+  overflow: auto;
+  width: 100%;
+}
+
+.table-container table {
+  margin-bottom: 0px;
+}
+
+.previous-button {
+  float: left;
+}
+.next-button {
+  float: right;
+}
+
+.modal img {
+  max-width: 100%;
+}
+
+.page-tabs {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.page-tabs li {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+
+.page-tabs li a {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.task-list > .done, .task-list > .done a {
+  color: green;
+}
+
+.form-group input, .form-group label {
+  transition: all .5s;
+}
+
+form #submit-message {
+  transition: all .5s;
+}
+
+.draggable {
+    cursor: grab;
+}
+
+tr * {
+    transition: all .5s;
+}
+
+.activity-category {
+  background: #eceeef;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: .3em;
+}
+
+.media-item-container.small img {
+  max-height: 20em;
+}
