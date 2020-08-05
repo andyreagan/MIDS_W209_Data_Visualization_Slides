@@ -1,0 +1,109 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>HTML Template</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <svg></svg>
+
+  <script>
+    
+
+
+
+
+var w = 400;
+var h = 150;
+var svg = d3.select("svg")
+.attr("width",w)
+.attr("height",h);
+
+var margin = {left: 10,
+             right: 0,
+             top: 0,
+             bottom: 30};
+
+var figw = w-margin.left-margin.right;
+var figh = h-margin.top-margin.bottom;
+
+var x = d3.scaleLinear()
+.domain([0,24])
+.range([margin.left,margin.left+figw]);
+
+var y = d3.scaleLinear()
+.domain([0,7])
+.range([margin.top+figh,margin.top]);
+
+d3.json(
+  "http://people.ischool.berkeley.edu/~andrew.reagan/files/noise.json",
+  function(error, data) {
+    var timestamps = data.map(function(d) {
+      return moment(d.ts, "X");
+    });
+    console.log(timestamps);
+    var rectw = (x(1)-x(0))*.9;
+    // let's make them square
+    var recth = rectw;
+    // and then make sure there is enough space
+    console.log(rectw*7);
+    // other option
+    // var recth = (y(0)-y(1))*.9;
+    var messageMat = Array(7);
+    for (var i=0; i<7; i++) {
+      messageMat[i] = Array(24);
+      for (var j=0; j<24; j++) {
+        messageMat[i][j] = 0;
+      }
+    }
+    // for (msg in timestamps) {
+     for (var i=0; i<timestamps.length; i++) {                          
+                          // console.log(msg);
+      messageMat[timestamps[i].day()][timestamps[i].hour()]++;
+    }
+    console.log(messageMat);
+                                        // could create 7 separate appends for each day
+                                        // but I say we do them all at once
+                                        // so, first, let's flatten the array
+                                        var flatMat = Array(24*7);
+                                        for (var i=0; i<flatMat.length; i++) {
+                                                                        flatMat[i] = messageMat[Math.floor(i/24)][i % 24];
+                                                                        }
+                                                                        console.log(flatMat);
+                                                                        var maxMessages = d3.max(flatMat);
+                                                                        svg.selectAll("rect")
+                                                                        .data(flatMat)
+                                                                        .enter()
+                                                                        .append("rect")
+                                                                        .attr("x",function(d,i) { return x(i%24); })
+                                                                        .attr("y",function(d,i) { return y(Math.floor(i/24)); })
+                                                                        .attr("width",rectw)
+                                                                        .attr("height",recth)
+                                                                        .attr("opacity",function(d) { return d/maxMessages; })
+                                                                        .attr("fill",function(d,i) { return "red"; });
+                                                                        
+                                                                        
+  }
+);
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
