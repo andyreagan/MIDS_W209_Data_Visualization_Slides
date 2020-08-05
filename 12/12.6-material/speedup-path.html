@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Speedup using Path</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div id="mychart"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var width = 900;
+var height = 300;
+var svg = d3.select("#mychart").append("svg")
+  .attr("height",height)
+  .attr("width",width);
+
+var x = d3.scaleLinear()
+  .range([0,width]);
+
+var y = d3.scaleLinear()
+  .range([height,0]);
+
+var parser = d3.timeParse("%Y-%m-%d");
+
+d3.csv("http://hedonometer.org/data/word-vectors/vacc/sumhapps.csv",function(data) {
+  data = data.map(function(d) {
+    d.value = +d.value;
+    d.date =  parser(d.date);
+    return d;
+  })
+  x.domain(d3.extent(data.map(function(d) { return d.date; })));
+  y.domain(d3.extent(data.map(function(d) { return d.value; })));
+  var renderCircles = function() {
+    svg.selectAll("circle").data(data)
+      .enter()
+      .append("circle")
+      .attr("r",function(d,i) { return 3; })
+      .attr("cx",function(d,i) { return x(d.date); })
+      .attr("cy",function(d,i) { return y(d.value); });
+    }
+  var renderPath = function() {
+    // render a path here... 
+  }
+  renderCircles();
+  // renderPath();
+})
+</script>
+
+</body>
+</html>

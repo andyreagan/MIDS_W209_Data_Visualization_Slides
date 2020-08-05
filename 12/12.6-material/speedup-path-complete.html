@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Speedup using Path</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <svg id="mysvg"></svg>
+  <canvas id="mycanvas"></canvas>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var width = 900;
+var height = 300;
+var svg = d3.select("#mysvg")
+  .attr("height",height)
+  .attr("width",width);
+
+var canvas = d3.select("#mycanvas")
+  .attr("height",height)
+  .attr("width",width);
+// (could have used document.getElementById("mycanvas");)
+// need the .node() because we selected with D3
+var ctx = canvas.node().getContext("2d");
+
+var x = d3.scaleLinear()
+  .range([0,width]);
+
+var y = d3.scaleLinear()
+  .range([height,0]);
+
+var parser = d3.timeParse("%Y-%m-%d");
+
+d3.csv("http://hedonometer.org/data/word-vectors/vacc/sumhapps.csv",function(data) {
+  data = data.map(function(d) {
+    d.value = +d.value;
+    d.date =  parser(d.date);
+    return d;
+  })
+  x.domain(d3.extent(data.map(function(d) { return d.date; })));
+  y.domain(d3.extent(data.map(function(d) { return d.value; })));
+  var renderCircles = function() {
+    svg.selectAll("circle").data(data)
+      .enter()
+      .append("circle")
+      .attr("r",function(d,i) { return 3; })
+      .attr("cx",function(d,i) { return x(d.date); })
+      .attr("cy",function(d,i) { return y(d.value); });
+    }
+  var renderPath = function() {
+    // render a path here...
+    var line = d3.line()
+      .x(function(d) { return x(d.date); })
+      .y(function(d) { return y(d.value); });
+   svg.append("path").datum(data).attr("d", line)
+    .style("fill","none")
+    .style("stroke","black");
+}
+var renderCirclesCanvas = function() {
+var circle = d3.symbol().type(d3.symbolCircle).context(ctx);
+data.forEach(function(d) {
+// console.log(d);
+ctx.beginPath();
+// console.log([x(d.date),y(d.value)]);
+ctx.translate(x(d.date),y(d.value))
+circle(d);
+ctx.fill();
+ctx.translate(-x(d.date),-y(d.value))
+ctx.closePath();
+});
+};
+var renderPathCanvas = function() {
+// ctx.beginPath();
+    var line = d3.line()
+      .x(function(d) { return x(d.date); })
+.y(function(d) { return y(d.value); })
+.context(ctx);
+  ctx.fillStyle = "black"
+  ctx.strokeStyle = "black"
+  line(data);
+  // circle(d);
+  // ctx.fill();
+  ctx.stroke();
+  // ctx.closePath();
+};
+  renderCircles();
+  renderPath();
+  renderCirclesCanvas();
+  renderPathCanvas();
+})
+</script>
+
+</body>
+</html>

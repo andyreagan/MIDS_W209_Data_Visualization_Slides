@@ -1,0 +1,12 @@
+Exercise for Infographics section
+---------------------------------
+
+In developing an infographic, you need to find effective visual representations for abstract concepts. That often involves a search for icons that (a) clearly suggest the concepts you need to represent and (b) look like they belong together. For some quick practice, find three icons that work together stylistically to represent the three sectors of a modern economy: raw materials, manufacturing, and service. Wikipedia helpfully defines the three-sector theory as dividing the economy into
+
+    Primary: involves the retrieval and production of raw materials, such as corn, coal, wood and iron. (A coal miner and a fisherman would be workers in the primary sector.)
+    Secondary: involves the transformation of raw or intermediate materials into goods e.g. manufacturing steel into cars, or textiles into clothing. (A builder and a dressmaker would be workers in the secondary sector.)
+    Tertiary: involves the supplying of services to consumers and businesses, such as baby-sitting, cinema and banking. (A shopkeeper and an accountant would be workers in the tertiary sector.)
+    (from https://en.wikipedia.org/wiki/Economic_sector)
+
+Paste your three icons into a single image file and upload it here. The combined image should be small; after all, we are talking about icons, not illustrations. The easiest way to do this assignment is probably to take partial screen captures of the icons you choose. On a Mac, type command-shift-4; on Windows, use the Snipping Tool in rectangular snip mode; on Linux, use 'gnome-screenshot -a' or the Take Screenshot accessory with a selected area. You can then paste the three screen captures into a single document and save that as one image. (If the document is not an image, you can do that by taking another partial screen shot). Watermarks are fine, and low resolution is fine. You do not need to purchase any icons for this exercise.
+ 

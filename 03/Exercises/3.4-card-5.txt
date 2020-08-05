@@ -1,0 +1,2 @@
+<p data-height="265" data-theme-id="0" data-slug-hash="zdoGMW" data-default-tab="js,result" data-user="MIDS-W209" data-embed-version="2" data-pen-title="Manipulating shape and size" data-editable="true" class="codepen">See the Pen <a href="https://codepen.io/MIDS-W209/pen/zdoGMW/">Manipulating shape and size</a> by W209  (<a href="https://codepen.io/MIDS-W209">@MIDS-W209</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
